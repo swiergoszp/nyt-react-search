@@ -1,14 +1,28 @@
-body {
+.jumbotron {
+  background-image: url(./images/newspaper.jpg);
+  background-position: top;
+  background-size: cover;
+  font-family: 'Old English';
+  padding-bottom: 150px;
   margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.search {
+
+}
+
+.search-title {
+  padding: 50px 0 20px 0;
+}
+
+.results {
+  margin: 10px;
+}
+
+.btn-warning {
+  margin: 0 5px 0 5px;
+}
+
+.wrapper {
+  background-color: #FFF0B3;
 }

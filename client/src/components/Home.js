@@ -12,7 +12,7 @@ class Home extends Component {
     endYear: "",
     articles: [],
     saved: []
-  };
+  }
 
   componentDidMount() {
     this.getSavedArticles()
@@ -40,7 +40,8 @@ class Home extends Component {
   }
 
   renderSaved = () => {
-    return this.state.saved.map(save => (
+    return (
+      this.state.saved.map(save => (
       <Saved
         _id={save._id}
         key={save._id}
@@ -50,7 +51,7 @@ class Home extends Component {
         handleDeleteButton={this.handleDeleteButton}
         getSavedArticles={this.getSavedArticles}
       />
-    ));
+    )));
   }
 
   handleTopicChange = (event) => {
@@ -68,12 +69,15 @@ class Home extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     console.log("Getting NYT Articles");
-    console.log("this.state.topic: ", this.state.topic);
-    console.log("this.state.startYear: ", this.state.startYear);
-    console.log("this.state.endYear: ", this.state.endYear);
     API.searchNYT(this.state.topic, this.state.startYear, this.state.endYear)
       .then((res) => {
-        this.setState({ articles: res.data.response.docs.slice(0,5) })
+        this.setState({ 
+          articles: res.data.response.docs.slice(0,5),
+          // clear form data
+          topic: " ",
+          startYear: " ",
+          endYear: " "
+        })
         console.log("this.state.articles: ", this.state.articles);
       });
   }
@@ -103,10 +107,10 @@ class Home extends Component {
       <div className="main-container">
 
         <div className="jumbotron">
-          <h1 className="text-center"><strong>New York Times Article Search</strong></h1>
+          {/* <h1 className="text-center title"><strong>Start Your Search Here</strong></h1> */}
         </div>
 
-        <div className="container">
+        <div className="container wrapper">
           
           <Search
             handleTopicChange={this.handleTopicChange}
@@ -121,9 +125,7 @@ class Home extends Component {
               <div className="col-lg-12">
                 <div className="panel panel-primary">
                   <div className="panel-heading">
-                    <h3 className="panel-title">
-                      <strong>Saved Articles</strong>
-                    </h3>
+                    <h3 className="panel-title">Saved Articles</h3>
                   </div>
                   <div className="panel-body">
                     <ul className="list-group">
